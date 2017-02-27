@@ -13,12 +13,12 @@ sudo docker run tensorflow/tf_grpc_server --cluster_spec="worker|localhost:2222;
 ```
 
 #### Results:
+
 | paradigm | workers | Crossentropy | Accuracy | Training time (s)
-| --- | -----------| ---- | ----
+| --- | -----------| ---- | ---- | ----
 | synch | 3 | 884 | 0.978 | 62.8
 | synch | 3 | 951 | 0.975 | 62.8
 | asynch | 3 | 783 | 0.967 | 21.6
-
 
 
 #### Conclusions: 
