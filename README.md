@@ -2,7 +2,12 @@
 Proof of Concept with Distributed Tensorflow at BEEVA Research Lab
 
 ### Experiment 1: no GPU
-PC: Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz, 16GB, 4 processors
+
+* MNIST training on dockerized distributed tensorflow locally
+* Based on https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/dist_test
+* PC: Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz, 16GB, 4 processors
+
+![Tensorboard](/images/tensorboard_mnist.png)
 
 #### Deploy
 
