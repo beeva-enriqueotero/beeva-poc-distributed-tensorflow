@@ -16,10 +16,10 @@ Launch the Tensorflow container
 ```
 sudo ./local_test_board.sh https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-cpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON2,label=cpu-slave/lastSuccessfulBuild/artifact/pip_test/whl/tensorflow-1.0.0-cp27-none-linux_x86_64.whl
 ```
-And execute `dist_mnist_test.sh` into Tensorflow container
+And execute `tensorboard` and `dist_mnist_test.sh` into Tensorflow container
 ```
-# tensorboard
-python -m tensorflow.tensorboard --logdir=mylog.log
+# tensorboard browser on localhost:6006
+tensorboard --logdir=/tmp/mnist_train/ &
 # 3 workers
 /var/tf_dist_test/scripts/dist_mnist_test.sh --ps_hosts "localhost:2000,localhost:2001" --worker_hosts "localhost:3000,localhost:3001,localhost:3002" --num_gpus 0
 ```
@@ -35,5 +35,4 @@ python -m tensorflow.tensorboard --logdir=mylog.log
 
 #### Conclusions: 
 * Asynchronous data-parallel is much faster, a little less accurate
-
 
