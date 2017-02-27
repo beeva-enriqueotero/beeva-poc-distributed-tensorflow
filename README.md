@@ -18,6 +18,8 @@ sudo ./local_test_board.sh https://ci.tensorflow.org/view/Nightly/job/nightly-ma
 ```
 And execute `dist_mnist_test.sh` into Tensorflow container
 ```
+# tensorboard
+python -m tensorflow.tensorboard --logdir=mylog.log
 # 3 workers
 /var/tf_dist_test/scripts/dist_mnist_test.sh --ps_hosts "localhost:2000,localhost:2001" --worker_hosts "localhost:3000,localhost:3001,localhost:3002" --num_gpus 0
 ```
