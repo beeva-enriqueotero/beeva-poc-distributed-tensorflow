@@ -42,3 +42,5 @@ tensorboard --logdir=/tmp/mnist_train/ &
 #### Conclusions: 
 * Asynchronous data-parallel is much faster, a little less accurate
 
+
+### [Experiment 2: multi-GPU](README_multigpu.md)
