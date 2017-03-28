@@ -16,8 +16,8 @@ Proof of Concept with Tensorflow & Multi-GPUs at BEEVA Research Lab
 
 | batch size | gpus (clones) | clone_on_cpu | Accuracy (test) | Steps | Training time (s)
 | --- | --- | --- | --- | --- | ---
-| 50 | 1 | False | 0.967+-0.001 | 12 | 40.6+-0.1
-| 50 | 2 | False | 0.969 | 12 | 41.9
+| 50 | 1 | False | 0.967+-0.001 | 1200 | 40.6+-0.1
+| 50 | 2 | False | 0.969 | 1200 | 41.9
 
 #### Conclusions:
 * Stable version was not compliant with TF1.0 until 13 march 2017
