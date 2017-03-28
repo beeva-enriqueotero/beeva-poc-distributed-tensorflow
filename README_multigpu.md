@@ -9,10 +9,34 @@ Proof of Concept with Tensorflow & Multi-GPUs at BEEVA Research Lab
 * Based on [Transparent multi-gpu training on Tensorflow with Keras](https://medium.com/@kuza55/transparent-multi-gpu-training-on-tensorflow-with-keras-8b0016fd9012#.w0nbus9yu). Custom [fork](https://github.com/beeva-enriqueotero/keras-extras/blob/master/examples/mnist_cnn_multi.py) to implement example and fix TF 1.0 compatibility
 * ***Note**: first (failed) attempt was using tf-slim. [More info](README_multigpu_tfslim.md)*
 * Infrastructure 1: AWS p2.8x (8 gpus). Deep Learning 2.0 AMI, Keras==1.2.2, libcudnn.so.5
-* Infrastructure 2: Google n1-standard-16 with 2 gpus (2 x nVidia Tesla K80), tensorflow-gpu==1.01, Keras==2.0.2, NVIDIA Driver 375.39, libcudnn.so.5 (CuDNN 5.1)
+* Infrastructure 2: Google n1-standard-16 with 2 gpus (2 x nVidia Tesla K80), tensorflow-gpu==1.01, Keras==2.0.2 and 1.2.2, NVIDIA Driver 375.39, libcudnn.so.5 (CuDNN 5.1)
 
 #### Deploy
 
+[*Only Google*] Install NVIDIA Drivers, CuDNN, Keras and Tensorflow
+```
+# Execute as root
+#!/bin/bash
+echo "Checking for CUDA and installing."
+# Check for CUDA and try to install.
+if ! dpkg-query -W cuda; then
+  # The 16.04 installer works with 16.10.
+  curl -O http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+  dpkg -i ./cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+  apt-get update
+  apt-get install cuda -y
+fi
+
+# Go to https://developer.nvidia.com/rdp/cudnn-download
+# Upload to Google Cloud Storage
+gsutil cp -r gs://poc-tensorflow-gpus .
+tar xvzf poc-tensorflow-gpus/cudnn-8.0-linux-x64-v5.1.tgz cudnn/
+cd cudnn
+sudo cp -P include/cudnn.h /usr/include
+sudo cp -P lib64/libcudnn* /usr/lib/x86_64-linux-gnu/
+sudo chmod a+r /usr/lib/x86_64-linux-gnu/libcudnn*
+cd
+```
 [*Optional*] Modify print time format on Keras `generic_utils.py`
 ```
 sudo nano /usr/lib/python2.7/dist-packages/Keras-1.2.2-py2.7.egg/keras/utils/generic_utils.py
