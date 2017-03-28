@@ -60,13 +60,13 @@ time python keras-extras/examples/mnist_cnn_multi.py  --extras `pwd`/keras-extra
 | 1 | 128 | 4 | 0.9891 | 12 | 4.9
 | 1 | 128 | 8 | 0.9899 | 12 | 6.4
 | 2 | 128 | 1 | 0.9892 | 12 | 7.1
-| 2 | 128 | 2 | error | 12 | 50.0+-1.0
+| 2 | 128 | 2 | 0.9891 | 12 | 50.0+-1.0
 
 
 #### Conclusions: 
-* With Google GPUs no benefit is achieved with more than 1 gpu!
+* With Google 2 gpus is much slower than 1!
 * With AWS p2.8x 4 gpus is the fastest configuration. Only 30% faster than 1 gpu
-* 8 gpus is slower than 4 
+* With AWS 8 gpus is slightly slower than 4 
 * Due to technical implementation details, only even number of gpus allowed
 * CuDNN is mandatory to run the experiments
 * Google Engine Documentation about [attaching GPUs to instances](https://cloud.google.com/compute/docs/gpus/add-gpus) doesn't include references to CuDNN
