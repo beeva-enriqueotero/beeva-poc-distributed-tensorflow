@@ -7,9 +7,11 @@ Proof of Concept with Tensorflow & Multi-GPUs at BEEVA Research Lab
 * Dataset: MNIST. 60000 train samples, 10000 test samples
 * Model: Simple Convnet (5 layers) inspired by LeNet
 * Based on [Transparent multi-gpu training on Tensorflow with Keras](https://medium.com/@kuza55/transparent-multi-gpu-training-on-tensorflow-with-keras-8b0016fd9012#.w0nbus9yu). Custom [fork](https://github.com/beeva-enriqueotero/keras-extras/blob/master/examples/mnist_cnn_multi.py) to implement example and fix TF 1.0 compatibility
-* ***Note**: first (failed) attempt was using tf-slim. [More info](README_multigpu_tfslim.md)*
+* ***Note 1**: first (failed) attempt was using tf-slim. [More info](README_multigpu_tfslim.md)*
 * **Infrastructure 1**: AWS p2.8x (8 gpus). Deep Learning 2.0 AMI, Keras==1.2.2, libcudnn.so.5
 * **Infrastructure 2**: Google n1-standard-16 with 2 gpus (2 x nVidia Tesla K80), tensorflow-gpu==1.01, Keras==2.0.2 and 1.2.2, NVIDIA Driver 375.39, libcudnn.so.5 (CuDNN 5.1)
+* ***Note 2**: Our goal was to compare p2.8x on AWS with 8 gpus on GCE in terms of performance and price. Finally we only tested 2 GPUs on GCE due to the poor performance we got in relation to expected results. See [detailed issues](#issues)*
+
 
 #### Deploy
 
