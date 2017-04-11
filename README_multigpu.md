@@ -70,4 +70,31 @@ time python keras-extras/examples/mnist_cnn_multi.py  --extras `pwd`/keras-extra
 * Due to technical implementation details, only even number of gpus allowed
 * CuDNN is mandatory to run the experiments
 * Google Engine Documentation about [attaching GPUs to instances](https://cloud.google.com/compute/docs/gpus/add-gpus) doesn't include references to CuDNN
+* Both AWS and Google GPUs use PCIe host bridge topology (PHB)
 
+#### Issues:
+* GCE attached GPU instances don't support GPUDirect peer to peer memory access
+```
+ labs@instance-1:/usr/local/cuda-8.0/samples/0_Simple/simpleP2P$ ./simpleP2P
+    [./simpleP2P] - Starting...
+    Checking for multiple GPUs...
+    CUDA-capable device count: 2
+    > GPU0 = "      Tesla K80" IS  capable of Peer-to-Peer (P2P)
+    > GPU1 = "      Tesla K80" IS  capable of Peer-to-Peer (P2P)
+    Checking GPU(s) for support of peer to peer memory access...
+    > Peer access from Tesla K80 (GPU0) -> Tesla K80 (GPU1) : No
+    > Peer access from Tesla K80 (GPU1) -> Tesla K80 (GPU0) : No
+    Two or more GPUs with SM 2.0 or higher capability are required for ./simpleP2P.
+    Peer to Peer access is not available amongst GPUs in the system, waiving test.
+```
+
+* Google GPUs use PCI instead of PCI express
+```
+sudo lshw -C "display" | grep capabilities
+# GCE output:
+# capabilities: msi bus_master cap_list
+# AWS EC2 p2.8x output:
+# capabilities: pm msi pciexpress bus_master cap_list pm msi pciexpress bus_master cap_list
+```
+
+* Tensorflow on Google GPUs can't use DMA
