@@ -94,7 +94,7 @@ sudo lshw -C "display" | grep capabilities
 # GCE output:
 # capabilities: msi bus_master cap_list
 # AWS EC2 p2.8x output:
-# capabilities: pm msi pciexpress bus_master cap_list pm msi pciexpress bus_master cap_list
+# capabilities: pm msi pciexpress bus_master cap_list
 ```
 
 * Tensorflow on Google GPUs can't use DMA
