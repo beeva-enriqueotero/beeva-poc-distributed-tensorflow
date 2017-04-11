@@ -98,3 +98,5 @@ sudo lshw -C "display" | grep capabilities
 ```
 
 * Tensorflow on Google GPUs can't use DMA
+
+![DMA issue](images/google_gpus_dma.png)
