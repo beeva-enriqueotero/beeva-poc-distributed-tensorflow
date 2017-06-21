@@ -11,6 +11,8 @@ Proof of Concept with Tensorflow & Multi-GPUs at BEEVA Research Lab
 * **Infrastructure 1**: AWS p2.8x (8 gpus nvidia Tesla K80). Deep Learning 2.0 AMI. Amazon Linux (CentOS), Keras==1.2.2, libcudnn.so.5
 * **Infrastructure 2**: Google n1-standard-16 with 2 gpus (nvidia Tesla K80), Ubuntu 16.04 LTS, tensorflow-gpu==1.01, Keras==2.0.2 and 1.2.2, NVIDIA Driver 375.39, libcudnn.so.5 (CuDNN 5.1)
 * ***Note 2**: Our goal was to compare p2.8x on AWS with 8 gpus on GCE in terms of performance and price. Finally we only tested 2 GPUs on GCE due to the poor performance we got in relation to expected results. See [detailed issues](#issues)*
+* ***Note 3**: Tests repeated on 21/06/2017 with Infrastructure 2, tensorflow-gpu==1.2.0, keras==2.0.5 and very similar results*
+
 
 
 #### Deploy
