@@ -15,8 +15,10 @@ Proof of Concept with Tensorflow & Multi-GPUs at BEEVA Research Lab
 
 #### Deploy
 
-[*Only Google*] Install NVIDIA Drivers, CuDNN, Keras and Tensorflow
+[*Only Google*] Install CUDA, CuDNN, Keras and Tensorflow
 ```
+# Install CUDA. Source: https://cloud.google.com/compute/docs/gpus/add-gpus#install-driver-script
+sudo su
 # Execute as root
 #!/bin/bash
 echo "Checking for CUDA and installing."
@@ -28,17 +30,28 @@ if ! dpkg-query -W cuda; then
   apt-get update
   apt-get install cuda -y
 fi
+exit
 
+# Install CuDNN. Source: https://askubuntu.com/questions/767269/how-can-i-install-cudnn-on-ubuntu-16-04
 # Go to https://developer.nvidia.com/rdp/cudnn-download
 # Upload to Google Cloud Storage
 gsutil cp -r gs://poc-tensorflow-gpus .
-tar xvzf poc-tensorflow-gpus/cudnn-8.0-linux-x64-v5.1.tgz cudnn/
-cd cudnn
+tar xvzf poc-tensorflow-gpus/cudnn-8.0-linux-x64-v5.1.tgz
+cd cuda
 sudo cp -P include/cudnn.h /usr/include
 sudo cp -P lib64/libcudnn* /usr/lib/x86_64-linux-gnu/
 sudo chmod a+r /usr/lib/x86_64-linux-gnu/libcudnn*
 cd
+
+# Install Tensorflow-gpu
+sudo apt-get install python-pip python-dev python-virtualenv
+wget https://pypi.python.org/packages/04/c4/ffb89dbea9e43e82665ff088fd08aa25aa93301aa8c480de278c8f576ea1/tensorflow_gpu-1.0.1-cp27-cp27mu-manylinux1_x86_64.whl#md5=c06b11dee765a99b1814ca393aaf558a
+pip install tensorflow_gpu-1.0.1-cp27-cp27mu-manylinux1_x86_64.whl
+
+# Install Keras
+pip install keras==2.0.2
 ```
+
 [*Optional*] Modify print time format on Keras `generic_utils.py`
 ```
 sudo nano /usr/lib/python2.7/dist-packages/Keras-1.2.2-py2.7.egg/keras/utils/generic_utils.py
