@@ -11,7 +11,7 @@ Proof of Concept with Tensorflow & Multi-GPUs at BEEVA Research Lab
 * **Infrastructure 1**: AWS p2.8x (8 gpus nvidia Tesla K80). Deep Learning 2.0 AMI. Amazon Linux (CentOS), Keras==1.2.2, libcudnn.so.5
 * **Infrastructure 2**: Google n1-standard-16 with 2 gpus (nvidia Tesla K80), Ubuntu 16.04 LTS, tensorflow-gpu==1.0.1, Keras==2.0.2 and 1.2.2, NVIDIA Driver 375.39, libcudnn.so.5 (CuDNN 5.1)
 * **Infrastructure 3**: Google n1-highmem-32 with 8 gpus (nvidia Tesla K80), Ubuntu 16.04 LTS, tensorflow-gpu==1.2.0, Keras==2.0.5, NVIDIA Driver 375.39, libcudnn.so.5 (CuDNN 5.1)
-
+* **Infrastructure 4**: Azure NC24 with 4 gpu (nvidia Tesla K80), mxnet==0.9.5 (mxnet-0.9.5-py3.5), [mxnet](https://github.com/apache/incubator-mxnet/commit/0768c0e97c5aa1d142ff0b3b8d37b1c736a42b83), Release 0.10.0.post2, NVIDIA Driver v367.48, CUDA 8.0 (V8.0.61), libcudnn.so.5.1.10 (CuDNN 5.1)
 
 * ***Note 2**: Our goal was to compare p2.8x on AWS with 8 gpus on GCE in terms of performance and price. Finally we only tested 2 GPUs on GCE due to the poor performance we got in relation to expected results. See [detailed issues](#issues)*
 * ***Note 3**: Tests repeated on 21/06/2017 with Infrastructure 2, tensorflow-gpu==1.2.0, keras==2.0.5 and very similar results*
@@ -88,6 +88,12 @@ time python keras-extras/examples/mnist_cnn_multi.py  --extras `pwd`/keras-extra
 | 3 | 128 | 1 | 0.9901 | 12 | 56.5+-0.5
 | 3 | 128 | 2 | 0.9901 | 12 | 56.5+-0.5
 | 3 | 128 | 8 | 0.9895 | 12 | 75.0+-8.0
+| 4 | 128 | 1 | 0.9896 | 12 | 8.5+-0.1
+| 4 | 128 | 2 | 0.9899 | 12 | 12.0+-1.0
+| 4 | 128 | 4 | 0.9905 | 12 | 15.1+-0.5
+| 4 | 512 | 4 | 0.9872 | 12 | 4.9+-0.5
+| 4 | 1024 | 4 | 0.9852 | 12 | 3.6+-0.3
+| 4 | 2048 | 4 | 0.9788 | 12 | 3.0+-0.3
 
 
 #### Conclusions: 
@@ -98,6 +104,7 @@ time python keras-extras/examples/mnist_cnn_multi.py  --extras `pwd`/keras-extra
 * CuDNN is mandatory to run the experiments
 * Google Engine Documentation about [attaching GPUs to instances](https://cloud.google.com/compute/docs/gpus/add-gpus) doesn't include references to CuDNN
 * Both AWS and Google GPUs use PCIe host bridge topology (PHB)
+* Azure NC24 GPUs have SOC connections
 
 #### Issues:
 * GCE attached GPU instances don't support GPUDirect peer to peer memory access
