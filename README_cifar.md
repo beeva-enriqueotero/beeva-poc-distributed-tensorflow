@@ -19,7 +19,7 @@ python models/tutorials/image/cifar10/cifar10_multi_gpu_train.py
 
 #### Results:
 
-| [infrastructure](https://github.com/beeva-enriqueotero/beeva-poc-distributed-tensorflow/blob/master/README_multigpu.md#experiment-2-multi-gpu) | batch size | gpus | Accuracy (validation) | Epochs | Throughput (s/epoch)
+| infrastructure | batch size | gpus | Accuracy (validation) | Epochs | Throughput (s/epoch) | GPU util
 | --- | --- | --- | --- | --- | --- | ---
 | 1 | 128 | 1 | ? | ? | 4300 | ? 
 | 1 | 64 | 1 | ? | ? | 4300 | ?
