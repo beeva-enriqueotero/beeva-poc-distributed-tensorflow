@@ -20,7 +20,7 @@ python models/tutorials/image/cifar10/cifar10_multi_gpu_train.py
 Launch multi-gpu cifar10_estimator experiment
 ```
 # python models/tutorials/image/cifar10_estimator/generate_cifar10_tfrecords.py --data-dir=${PWD}/cifar-10-data
-python models/tutorials/image/cifar10_estimator/cifar10_main.py --data-dir=${PWD}/cifar-10-data --job-dir=/tmp/cifar10 --num-gpus=1 --num-layers=50
+
 python tutorials/image/cifar10_estimator/cifar10_main.py --data-dir=${PWD}/cifar-10-data --job-dir=/tmp/cifar10 --num-gpus=1 --num-layers=50 --train-batch-size=128 --train-steps=4700 --learning-rate=0.1 --variable-strategy=GPU
 ```
 
