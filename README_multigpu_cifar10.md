@@ -29,3 +29,6 @@ python models/tutorials/image/cifar10_estimator/cifar10_main.py --data-dir=${PWD
 | 1 | AlexNet | 128 | 4 | ? | ? | 16000 | 93%
 | 1 | AlexNet | 128 | 2 | ? | ? | 8500 | 94%
 | 1 | ResNet50 | x | 1 | x | x | x | x
+| 1 | ResNet50 | 128 | 1 | x | x | 700 | 80%
+| 1 | ResNet50 | 256 | 1 | x | x | 800 | 90%
+| 1 | ResNet50 | 512 | 1 | x | x | 900 | 95%
