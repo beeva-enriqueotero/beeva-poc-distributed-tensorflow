@@ -12,11 +12,19 @@ Proof of Concept with Tensorflow & Multi-GPUs at BEEVA Research Lab
 
 #### Run
 
-Launch multi-gpu experiment
+Launch multi-gpu cifar10 experiment (old)
 ```
 python models/tutorials/image/cifar10/cifar10_multi_gpu_train.py
-python models/tutorials/image/cifar10_estimator/cifar10_main.py --data-dir=${PWD}/cifar-10-data --job-dir=/tmp/cifar10 --num-gpus=1 --num-layers=50
 ```
+
+Launch multi-gpu cifar10_estimator experiment
+```
+# python models/tutorials/image/cifar10_estimator/generate_cifar10_tfrecords.py --data-dir=${PWD}/cifar-10-data
+python models/tutorials/image/cifar10_estimator/cifar10_main.py --data-dir=${PWD}/cifar-10-data --job-dir=/tmp/cifar10 --num-gpus=1 --num-layers=50
+python tutorials/image/cifar10_estimator/cifar10_main.py --data-dir=${PWD}/cifar-10-data --job-dir=/tmp/cifar10 --num-gpus=1 --num-layers=50 --train-batch-size=128 --train-steps=4700 --learning-rate=0.1 --variable-strategy=GPU
+```
+
+
 
 #### Results:
 
@@ -28,7 +36,6 @@ python models/tutorials/image/cifar10_estimator/cifar10_main.py --data-dir=${PWD
 | 1 | AlexNet | 128 | 8 | ? | ? | 20000 | 63%
 | 1 | AlexNet | 128 | 4 | ? | ? | 16000 | 93%
 | 1 | AlexNet | 128 | 2 | ? | ? | 8500 | 94%
-| 1 | ResNet50 | x | 1 | x | x | x | x
-| 1 | ResNet50 | 128 | 1 | x | x | 700 | 80%
+| 1 | ResNet50 | 128 (lr=0.1) | 1 | 0.657 | 12 (4700 steps) | 700 | 80%
 | 1 | ResNet50 | 256 | 1 | x | x | 800 | 90%
 | 1 | ResNet50 | 512 | 1 | x | x | 900 | 95%
