@@ -55,4 +55,12 @@ python models/tutorials/image/cifar10_estimator/cifar10_main.py --data-dir=${PWD
 | --- | --- | --- | --- | --- | --- | --- | ---
 | 1* | ResNet50 | 1x128 (lr=0.1) | 0 | x | 12 (4700 steps) | 110 | 0%
 | 1* | ResNet50 | 1x512 (lr=0.1) | 0 | x | 12 (4700 steps) | 100 | 0%
+| --- | --- | --- | --- | --- | --- | --- | ---
+| 1* | Alexnet | 1x128 (lr=?) | 0 | x | 12 (4700 steps) | 1200 | 0%
+| 1* | Alexnet | 1x128 (lr=?) | 1 | x | 12 (4700 steps) | 4300 | 95%
+| 1* | Alexnet | 8x128 (lr=?) | 8 | x | 12 (4700 steps) | 20000 | 70%
+| 1* | Alexnet | 1x512 (lr=?) | 0 | x | 12 (4700 steps) | 1500 | 0%
+| 1* | Alexnet | 1x512 (lr=?) | 1 | x | 12 (4700 steps) | 4500 | 98%
+| 1* | Alexnet | 8x512 (lr=?) | 8 | x | 12 (4700 steps) | 20000 | 0% to 100%
+
 
