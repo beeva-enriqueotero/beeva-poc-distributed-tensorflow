@@ -7,6 +7,7 @@ Proof of Concept with Tensorflow & Multi-GPUs at BEEVA Research Lab
 * Dataset: CIFAR10. 50000 train samples, 10000 test samples
 * Models: [Alexnet variant](https://www.tensorflow.org/tutorials/deep_cnn#training_a_model_using_multiple_gpu_cards), [Resnet50](https://github.com/tensorflow/models/tree/master/tutorials/image/cifar10_estimator) 
 * **Infrastructure 1**: AWS p2.8x (8 gpus nvidia Tesla K80). Deep Learning 2.3 Ubuntu AMI. Tensorflow, nvidia driver 375.66, CUDA 8.0, libcudnn.so.5.1.10
+* **Infrastructure 1\***: AWS p2.8x (8 gpus nvidia Tesla K80). Deep Learning 2.4 Ubuntu AMI. Tensorflow, nvidia driver 375.66, CUDA 8.0, libcudnn.so.5.1.10
 
 #### Deploy
 
@@ -45,7 +46,8 @@ python models/tutorials/image/cifar10_estimator/cifar10_main.py --data-dir=${PWD
 | 1 | ResNet50 | 8x256 (lr=0.4)| 8 | 0.16 | 12 (300) | 5300 | 90%
 | 1 | ResNet50 | 8x256 (lr=0.4 strategy CPU)| 8 | 0.16 | 12 (300) | 5700 | 80%
 | 1 | ResNet50 | 256 (lr=0.4 strategy CPU) | 1 | 0.42 | 12 (300) | 3500 | 80%
-| 1 | ResNet50 | 128 (lr=0.1) | 1 | 0.470 | 12 (4700 steps) | 700 | 80%
-| 1 | ResNet50 | 128 (lr=0.1) | 1 | 0.663 | 12 (4700 steps) | 700 | 80%
-| 1 | ResNet50 | 8x128 (lr=0.8) | 8 | 0.585 | 12 (4700 steps) | 4100 | 60%
-| 1 | ResNet50 | 8x512 (lr=3.2) | 8 | x | 12 (4700 steps) | 6100 | 95%
+| 1* | ResNet50 | 128 (lr=0.1) | 1 | 0.470 | 12 (4700 steps) | 700 | 80%
+| 1* | ResNet50 | 128 (lr=0.1) | 1 | 0.663 | 12 (4700 steps) | 700 | 80%
+| 1* | ResNet50 | 8x128 (lr=0.8) | 8 | 0.585 | 12 (4700 steps) | 4100 | 60%
+| 1* | ResNet50 | 8x512 (lr=3.2) | 8 | 0.398 | 12 (4700 steps) | 5900 | 95%
+| 1* | ResNet50 | 1x512 (lr=0.4) | 1 | x | 12 (4700 steps) | 900 | 95%
