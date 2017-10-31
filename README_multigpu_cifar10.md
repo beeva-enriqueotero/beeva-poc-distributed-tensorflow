@@ -45,3 +45,7 @@ python models/tutorials/image/cifar10_estimator/cifar10_main.py --data-dir=${PWD
 | 1 | ResNet50 | 8x256 (lr=0.4)| 8 | 0.16 | 12 (300) | 5300 | 90%
 | 1 | ResNet50 | 8x256 (lr=0.4 strategy CPU)| 8 | 0.16 | 12 (300) | 5700 | 80%
 | 1 | ResNet50 | 256 (lr=0.4 strategy CPU) | 1 | 0.42 | 12 (300) | 3500 | 80%
+| 1 | ResNet50 | 128 (lr=0.1) | 1 | 0.470 | 12 (4700 steps) | 700 | 80%
+| 1 | ResNet50 | 128 (lr=0.1) | 1 | 0.663 | 12 (4700 steps) | 700 | 80%
+| 1 | ResNet50 | 8x128 (lr=0.8) | 8 | 0.585 | 12 (4700 steps) | 4100 | 60%
+| 1 | ResNet50 | 8x512 (lr=3.2) | 8 | x | 12 (4700 steps) | 6100 | 95%
